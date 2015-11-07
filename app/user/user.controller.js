@@ -19,8 +19,8 @@
                         if (200 === response.status) {
                             console.log('login success');
 
-                            Mixpanel.trackLogin('1', { "$first_name": response.data.user });
-                            
+                            Mixpanel.trackLogin(response.data.id, { "$first_name": response.data.user });
+
                             // very basic implementation
                             $sessionStorage.user = response.data.user;
                             $sessionStorage.expire = response.data.expire;
@@ -65,7 +65,7 @@
                             console.log('register success');
 
                             Mixpanel.trackRegister();
-                            
+
                             $location.url('login');
                         } else {
                             console.log('register failed');

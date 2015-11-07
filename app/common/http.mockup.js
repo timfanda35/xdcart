@@ -141,7 +141,7 @@
                                     && postData.password === user.password
                                 ) {
                                     // set expire timestamp (mock = 1 day)
-                                    result = [200, {user: postData.username, expire: Math.floor(Date.now() / 1000) + 86400}, {}];
+                                    result = [200, {id: user.id, user: postData.username, expire: Math.floor(Date.now() / 1000) + 86400}, {}];
                                     passed = true;
                                 }
                             });
@@ -170,6 +170,8 @@
                             break;
                         case 'register':
                             var duplicated = false;
+
+                            postData.id = Math.floor((Math.random() * 10) + 1);
                             angular.forEach(mockData.users, function (user, i) {
                                 if (postData.username === user.username) {
                                     result = [409, 'user exists', {}];

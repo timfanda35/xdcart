@@ -5,7 +5,7 @@ var token = "f431c48e040a9cd8468ebf65cb286a60";
 angular.module('analytics.mixpanel')
 
     .config([
-        '$mixpanelProvider', 
+        '$mixpanelProvider',
         function($mixpanelProvider) {
 
         $mixpanelProvider.token(token);
@@ -14,7 +14,7 @@ angular.module('analytics.mixpanel')
 angular.module('Mixpanel', ['analytics.mixpanel'])
 
     .service('Mixpanel', [
-        '$rootScope', '$mixpanel', 
+        '$rootScope', '$mixpanel',
         function ($rootScope, $mixpanel) {
 
         this.trackPageView = function () {
@@ -31,7 +31,7 @@ angular.module('Mixpanel', ['analytics.mixpanel'])
             mixpanel.track("user.register.success");
             console.log('mixpanel: register');
         };
-        
+
         this.trackLogin = function (identify, peopleInfo) {
             $mixpanel.identify(identify);
             $mixpanel.people.set(peopleInfo);
